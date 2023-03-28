@@ -1,5 +1,5 @@
 {
-  "routes": [
-    { "src": "/tools", "dest": "/tools.html" }
+  "builds": [
+    { "src": "/tools.html", "use": "@vercel/static" }
   ]
 }
