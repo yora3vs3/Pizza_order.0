@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hardware Tools Inventory</title>
+</head>
+<body>
+  <h1>Hardware Tools Inventory</h1>
+  
+  <form onsubmit="addTool(); return false;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <label for="buying-price">Buying Price:</label>
+    <input type="number" id="buying-price" required>
+    <label for="selling-price">Selling Price:</label>
+    <input type="number" id="selling-price" required>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" required>
+    <button type="submit">Add Tool</button>
+    <button onclick="exportToCSV()">Download CSV</button>
+
+  </form>
+  
+  <input type="text" id="search" oninput="searchTools()" placeholder="Search tools...">
+  
+  <table id="spreadsheet">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Buying Price</th>
+        <th>Selling Price</th>
+        <th>Quantity</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  
+    <script>
+        // Define an array to store the tools
+        var tools = [];
+        
+        // Function to add a tool to the array and update the table
+        function addTool() {
+        var name = document.getElementById("name").value;
+        var buyingPrice = document.getElementById("buying-price").value;
+        var sellingPrice = document.getElementById("selling-price").value;
+        var quantity = document.getElementById("quantity").value;
+        tools.push({name: name, buyingPrice: buyingPrice, sellingPrice: sellingPrice, quantity: quantity});
+        updateTable();
+        document.getElementById("name").value = "";
+        document.getElementById("buying-price").value = "";
+        document.getElementById("selling-price").value = "";
+        document.getElementById("quantity").value = "";
+        }
+        
+        // Function to update the table with the current tool array
+        function updateTable() {
+        var table = document.getElementById("spreadsheet");
+        var tbody = table.getElementsByTagName("tbody")[0];
+        tbody.innerHTML = "";
+        for (var i = 0; i < tools.length; i++) {
+            var tool = tools[i];
+            var row = document.createElement("tr");
+            row.innerHTML = "<td>" + tool.name + "</td><td>" + tool.buyingPrice + "</td><td>" + tool.sellingPrice + "</td><td>" + tool.quantity + "</td><td><button onclick='editTool(" + i + ")'>Edit</button></td>";
+            tbody.appendChild(row);
+        }
+        }
+        
+        // Function to search the tool array and update the table
+        function searchTools() {
+        var search = document.getElementById("search").value.toLowerCase();
+        var filteredTools = tools.filter(function(tool) {
+            return tool.name.toLowerCase().includes(search);
+        });
+        tools = filteredTools;
+        updateTable();
+        }
+        
+        // Function to edit a tool in the array and update the table
+        function editTool(index) {
+        var tool = tools[index];
+        var name = prompt("Enter the new name:", tool.name);
+        var buyingPrice = prompt("Enter the new buying price:", tool.buyingPrice);
+        var sellingPrice = prompt("Enter the new selling price:", tool.sellingPrice);
+        var quantity = prompt("Enter the new quantity:", tool.quantity);
+        
+        // Update the tool object
+        tool.name = name;
+        tool.buyingPrice = buyingPrice;
+        tool.sellingPrice = sellingPrice;
+        tool.quantity = quantity;
+        
+        // Update the table
+        updateTable();
+        }
+        function exportToCSV() {
+            var csv = 'Name,Buying Price,Selling Price,Quantity\n';
+            for (var i = 0; i < tools.length; i++) {
+                var tool = tools[i];
+                csv += '"' + tool.name + '",' + tool.buyingPrice + ',' + tool.sellingPrice + ',' + tool.quantity + '\n';
+            }
+            var filename = 'tools.csv';
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            if (navigator.msSaveBlob) { // IE 10+
+                navigator.msSaveBlob(blob, filename);
+            } else {
+                var link = document.createElement("a");
+                if (link.download !== undefined) { // feature detection
+                // Browsers that support HTML5 download attribute
+                var url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                }
+            }
+            }
+
+    </script>
