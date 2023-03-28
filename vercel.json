@@ -1,9 +1,5 @@
 {
   "routes": [
-    { "handle": "filesystem" },
-    {
-      "src": "/(.*)",
-      "dest": "/tools.html"
-    }
+    { "src": "/tools", "dest": "/tools.html" }
   ]
 }
