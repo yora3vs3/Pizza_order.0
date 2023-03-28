@@ -1,5 +1,17 @@
 {
-  "builds": [
-    { "src": "/tools.html", "use": "@vercel/static" }
+  "build": {
+    "env": {
+      "PASSWORD": "${MY_PASSWORD}"
+    }
+  }
+},
+{
+
+  "routes": [
+    {
+      "src": "/tools",
+      "dest": "/tools.html"
+    }
   ]
 }
+
