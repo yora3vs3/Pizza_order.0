@@ -1,17 +1,8 @@
 {
-  "build": {
-    "env": {
-      "PASSWORD": "${MY_PASSWORD}"
-    }
-  }
-},
-{
-
   "routes": [
     {
-      "src": "/tools",
+      "src": "/",
       "dest": "/tools.html"
     }
   ]
 }
-
