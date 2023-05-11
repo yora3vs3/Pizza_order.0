@@ -7,7 +7,18 @@
         /* CSS styles for better presentation */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-image: url(background.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
         h1 {
@@ -22,14 +33,33 @@
             text-decoration: none;
             border-radius: 4px;
         }
+
+        .meal-picture {
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Order Page</h1>
-    <p>
-        <a class="button" href="order_details.html">Order Details</a>
-    </p>
+    <div class="container">
+        <h1>Order Page</h1>
+        <div class="meal-picture">
+            <img src="meal1.jpg" alt="Meal 1" width="200" height="150">
+        </div>
+        <div class="meal-picture">
+            <img src="meal2.jpg" alt="Meal 2" width="200" height="150">
+        </div>
+        <div class="meal-picture">
+            <img src="meal3.jpg" alt="Meal 3" width="200" height="150">
+        </div>
+        <div class="meal-picture">
+            <img src="meal4.jpg" alt="Meal 4" width="200" height="150">
+        </div>
+        <p>
+            <a class="button" href="order_details.html">Order Details</a>
+        </p>
+    </div>
 </body>
 
 </html>
