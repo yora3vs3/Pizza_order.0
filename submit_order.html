@@ -19,11 +19,11 @@
             font-weight: bold;
         }
 
-        .status.ready {
+        .ready {
             color: green;
         }
 
-        .status.not-ready {
+        .not-ready {
             color: red;
         }
     </style>
@@ -33,18 +33,26 @@
     <h1>Submit Order Page</h1>
 
     <div class="status">
-        Status:
-        <?php
-      $status = $_GET['status'];
-      if ($status === 'ready') {
-        echo '<span class="ready">Ready</span>';
-      } elseif ($status === 'not_ready') {
-        echo '<span class="not-ready">Not Ready</span>';
-      } else {
-        echo 'Unknown';
-      }
-    ?>
+        Status: <span id="mealStatus"></span>
     </div>
+
+    <script>
+        // JavaScript logic to retrieve the meal status from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        // Update the status text based on the retrieved status value
+        const mealStatusElement = document.getElementById('mealStatus');
+        if (status === 'ready') {
+            mealStatusElement.textContent = 'Ready';
+            mealStatusElement.classList.add('ready');
+        } else if (status === 'not_ready') {
+            mealStatusElement.textContent = 'Not Ready';
+            mealStatusElement.classList.add('not-ready');
+        } else {
+            mealStatusElement.textContent = 'Unknown';
+        }
+    </script>
 </body>
 
 </html>
