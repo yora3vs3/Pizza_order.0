@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pizza Ordering System</title>
+    <style>
+        /* CSS styles for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pizza Ordering System</h1>
+
+    <!-- Customer Section -->
+    <h2>Customer</h2>
+    <form id="customerForm">
+        <label for="pizzaType">Pizza Type:</label>
+        <select id="pizzaType">
+            <option value="thinCrispy">Thin and Crispy Crust</option>
+            <option value="handTossed">Hand Tossed</option>
+        </select>
+
+        <label for="pizzaSize">Pizza Size:</label>
+        <select id="pizzaSize">
+            <option value="10">10"</option>
+            <option value="12">12"</option>
+            <option value="14">14"</option>
+            <option value="16">16"</option>
+        </select>
+
+        <label for="pizzaTopping">Pizza Topping:</label>
+        <select id="pizzaTopping">
+            <option value="supreme">Supreme</option>
+            <option value="hawaiian">Hawaiian</option>
+            <option value="margherita">Margherita</option>
+            <option value="bbqChicken">BBQ Chicken</option>
+        </select>
+
+        <button class="submit-button" type="submit">Place Order</button>
+    </form>
+
+    <!-- Shop Manager Section -->
+    <h2>Shop Manager</h2>
+    <form id="managerForm">
+        <label for="pizzaSellingPrice">Pizza Selling Price:</label>
+        <input type="number" id="pizzaSellingPrice" step="0.01">
+
+        <button class="submit-button" type="submit">Update Selling Price</button>
+    </form>
+
+    <!-- Order Section -->
+    <h2>Order</h2>
+    <ul id="orderList">
+        <!-- Order items will be dynamically added here -->
+    </ul>
+
+    <!-- Delivery Section -->
+    <h2>Delivery</h2>
+    <ul id="deliveryList">
+        <!-- Delivery items will be dynamically added here -->
+    </ul>
+
+    <!-- Statistical Reports Section -->
+    <h2>Statistical Reports</h2>
+    <div id="statisticalReports">
+        <!-- Statistical reports will be dynamically added here -->
+    </div>
+
+    <script>
+    // JavaScript logic for the Pizza Ordering System
+        const customerForm = document.getElementById('customerForm');
+        const managerForm = document.getElementById('managerForm');
+        const orderList = document.getElementById('orderList');
+        const deliveryList = document.getElementById('deliveryList');
+        const statisticalReports = document.getElementById('statisticalReports');
+
+    // Event listener for customer form submission
+    customerForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+        // Get the selected values from the form
+        const pizzaType = document.getElementById('pizzaType').value;
+        const pizzaSize = document.getElementById('pizzaSize').value;
+        const pizzaTopping = document.getElementById('pizzaTopping').value;
+
+        // Perform calculations or other logic based on the selected values
+        // ...
+
+        // Create a new order item and add it to the order list
+        const newOrderItem = document.createElement('li');
+        newOrderItem.textContent = `Pizza: ${pizzaType} (${pizzaSize}") - Topping: ${pizzaTopping}`;
+        orderList.appendChild(newOrderItem);
+
+        // Clear the form inputs
+        customerForm.reset();
+    });
+
+    // Event listener for manager form submission
+    managerForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        // Get the updated pizza selling price from the form
+        const pizzaSellingPrice = document.getElementById('pizzaSellingPrice').value;
+
+        // Perform necessary actions with the selling price
+        // ...
+
+        // Clear the form input
+        managerForm.reset();
+    });
+
+    // Additional JavaScript logic for the Pizza Ordering System
+    // ...
+</script>

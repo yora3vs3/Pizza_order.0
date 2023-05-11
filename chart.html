@@ -1,24 +1,28 @@
-<title>Chart</title>
-<style>
-    /* CSS styles for better presentation */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
+<!DOCTYPE html>
+<html>
 
-    h1 {
-        color: #333;
-    }
+<head>
+    <title>Chart</title>
+    <style>
+        /* CSS styles for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-    }
-</style>
+        h1 {
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,6 +30,40 @@
     <p>
         <a class="button" href="#">Edit</a>
     </p>
+
+    <!-- HTML canvas element to render the chart -->
+    <canvas id="pizzaChart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // JavaScript code for creating the pie chart
+        document.addEventListener('DOMContentLoaded', function () {
+            const pizzaChartCanvas = document.getElementById("pizzaChart").getContext("2d");
+
+            // Chart data
+            const pizzaData = {
+                labels: ["Margherita", "Pepperoni", "Hawaiian"],
+                datasets: [{
+                    data: [30, 50, 20], // Example data (replace with actual quantities)
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                }],
+            };
+
+            // Chart options
+            const pizzaChartOptions = {
+                responsive: true,
+                maintainAspectRatio: true, // Change to "true" for smaller size
+                aspectRatio: 0.8, // Adjust the value to resize the chart
+            };
+
+            // Create the pie chart
+            new Chart(pizzaChartCanvas, {
+                type: "pie",
+                data: pizzaData,
+                options: pizzaChartOptions,
+            });
+        });
+    </script>
 </body>
 
 </html>

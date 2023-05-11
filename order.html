@@ -43,36 +43,101 @@
             width: 200px;
             height: auto;
             cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .meal-thumbnail img:hover {
+            transform: scale(1.2);
+        }
+
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-content img {
+            width: 120px;
+            height: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .marquee-content img:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
     </style>
+    <script>
+        function playHoverSound() {
+            var hoverSound = new Audio('hover-sound.mp3');
+            hoverSound.play();
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
-        <h1>Order Page</h1>
+        <h1>Order Page click to submit</h1>
         <div class="meal-thumbnail">
-            <a href="submit_order.html?status=ready">
-                <img src="meal1.jpg" alt="Meal 1">
+            <a href="submit_order.html?status=ready" onmouseover="playHoverSound()">
+                <img src="meal1.jpg" alt="Meal 1" onmouseover="playHoverSound()">
             </a>
         </div>
         <div class="meal-thumbnail">
             <a href="submit_order.html?status=not_ready">
-                <img src="meal2.jpg" alt="Meal 2">
+                <img src="meal2.jpg" alt="Meal 2" >
             </a>
         </div>
         <div class="meal-thumbnail">
             <a href="submit_order.html?status=ready">
-                <img src="meal3.jpg" alt="Meal 3">
+                <img src="meal3.jpg" alt="Meal 3" >
             </a>
         </div>
         <div class="meal-thumbnail">
             <a href="submit_order.html?status=not_ready">
-                <img src="meal4.jpg" alt="Meal 4">
+                <img src="meal4.jpg" alt="Meal 4" >
+            </a>
+        </div>
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=ready">
+                <img src="meal6.jpg" alt="Meal 6" >
+            </a>
+        </div>
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=ready">
+                <img src="meal5.jpg" alt="Meal 5" >
             </a>
         </div>
         <p>
             <a class="button" href="order_details.html">Order Details</a>
         </p>
+
+        <div class="marquee">
+            <div class="marquee-content">
+                <img src="meal1.jpg" alt="Image 1" onmouseover="playHoverSound()">
+                <img src="meal2.jpg" alt="Image 2" onmouseover="playHoverSound()">
+                <img src="meal3.jpg" alt="Image 3" onmouseover="playHoverSound()">
+                <img src="meal4.jpg" alt="Image 4" onmouseover="playHoverSound()">
+                <img src="meal5.jpg" alt="Image 5" onmouseover="playHoverSound()">
+                <img src="meal6.jpg" alt="Image 6" onmouseover="playHoverSound()">
+            </div>
+        </div>
     </div>
 </body>
 

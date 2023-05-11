@@ -7,7 +7,16 @@
         /* CSS styles for better presentation */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         h1 {
@@ -17,6 +26,7 @@
         .status {
             margin-top: 20px;
             font-weight: bold;
+            text-align: center;
         }
 
         .ready {
@@ -25,6 +35,18 @@
 
         .not-ready {
             color: red;
+        }
+
+        .thumbnail {
+            max-width: 200px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .clock {
+            font-size: 48px;
+            color: white;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -35,6 +57,13 @@
     <div class="status">
         Status: <span id="mealStatus"></span>
     </div>
+
+    <div class="thumbnail">
+        <h3>Your Favorite Pizza:</h3>
+        <img src="smile.jpg" alt="smile">
+    </div>
+
+    <div class="clock" id="clock"></div>
 
     <script>
         // JavaScript logic to retrieve the meal status from the query parameter
@@ -52,6 +81,15 @@
         } else {
             mealStatusElement.textContent = 'Unknown';
         }
+
+        // Update the clock every second
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const currentTime = new Date().toLocaleTimeString();
+            clockElement.textContent = currentTime;
+        }
+
+        setInterval(updateClock, 1000);
     </script>
 </body>
 

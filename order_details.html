@@ -8,6 +8,10 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-image: url('background.jpg');
+            /* Replace 'background.jpg' with the path to your background image */
+            background-size: cover;
+            background-position: center;
         }
 
         h1 {
@@ -22,6 +26,17 @@
             text-decoration: none;
             border-radius: 4px;
         }
+
+        .order-details {
+            font-weight: bold;
+        }
+
+        .editable-input {
+            border: none;
+            background-color: transparent;
+            color: #333;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -33,6 +48,73 @@
     <p>
         <a class="button" href="meal_details.html">Meal</a>
     </p>
+
+    <h2>Current Order Details</h2>
+    <p class="order-details">Pizza Name: <span id="pizzaName" contenteditable="true">Margherita</span></p>
+    <p class="order-details">Price per Pizza: <span id="pizzaPrice" contenteditable="true">$9.99</span></p>
+    <p class="order-details">Total Price: <span id="totalPrice" contenteditable="true">$19.98</span></p>
+
+    <h2>Order Status</h2>
+    <p class="order-details">Status: <span id="orderStatus" contenteditable="true">In Progress</span></p>
+    <p class="order-details">Accepted by Merchant: <span id="acceptedStatus" contenteditable="true">Yes</span></p>
+    <p class="order-details">Production Started: <span id="productionStatus" contenteditable="true">Started</span></p>
+
+    <h2>Historical Orders</h2>
+    <table>
+        <tr>
+            <th>Pizza Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td><span id="historicalPizzaName">Pepperoni</span></td>
+            <td><span id="historicalQuantity">2</span></td>
+            <td><span id="historicalPrice">$24.99</span></td>
+        </tr>
+        <!-- Add more rows for additional historical orders -->
+    </table>
+
+    <script>
+        // JavaScript code for additional functionality
+
+        // Retrieve the historical orders table
+        const historicalOrdersTable = document.querySelector("table");
+
+        // Function to add a new row to the historical orders table
+        function addHistoricalOrder(pizzaName, quantity, price) {
+            const newRow = document.createElement("tr");
+
+            const pizzaNameCell = document.createElement("td");
+            pizzaNameCell.textContent = pizzaName;
+            newRow.appendChild(pizzaNameCell);
+
+            const quantityCell = document.createElement("td");
+            quantityCell.textContent = quantity;
+            newRow.appendChild(quantityCell);
+
+            const priceCell = document.createElement("td");
+            priceCell.textContent = price;
+            newRow.appendChild(priceCell);
+
+            historicalOrdersTable.appendChild(newRow);
+        }
+
+        // Example: Add a historical order dynamically
+        addHistoricalOrder("Margherita", 1, "$12.99");
+
+        // Editable fields
+        const editableFields = document.getElementsByClassName("editable-input");
+        for (let i = 0; i < editableFields.length; i++) {
+            editableFields[i].addEventListener("input", function () {
+                const fieldName = this.getAttribute("data-field");
+                const fieldValue = this.textContent;
+
+                // Save the updated field value to the server or perform further actions
+                console.log(`Field ${fieldName} updated: ${fieldValue}`);
+            });
+        }
+    </script>
+
 </body>
 
 </html>

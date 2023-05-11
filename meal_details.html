@@ -8,6 +8,9 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         h1 {
@@ -28,11 +31,24 @@
 <body>
     <h1>Meal Details Page</h1>
     <p>
-        <a class="button" href="#">Meal Status</a>
+        <a class="button" href="submit_order.html?status=not_ready">Meal Status</a>
     </p>
     <p>
-        <a class="button" href="#">Phone Number</a>
+        <button class="button" onclick="displayInfo()">Phone Number</button>
     </p>
+    <p id="infoDisplay" style="display: none;">
+        <strong>Number:</strong> <span style="text-transform: uppercase;">+2540741196989</span><br>
+        <strong>Name:</strong> <span style="text-transform: uppercase;">Johnson</span><br>
+        <strong>Title:</strong> <span style="text-transform: uppercase;">Manager</span>
+    </p>
+
+    <script>
+        function displayInfo() {
+            var infoDisplay = document.getElementById("infoDisplay");
+            infoDisplay.style.display = "block";
+        }
+    </script>
+
     <p>
         <a class="button" href="chart.html">Chart Frame</a>
     </p>
