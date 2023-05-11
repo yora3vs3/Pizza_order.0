@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Submit Order</title>
+    <style>
+        /* CSS styles for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .status.ready {
+            color: green;
+        }
+
+        .status.not-ready {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Submit Order Page</h1>
+
+    <div class="status">
+        Status:
+        <?php
+      $status = $_GET['status'];
+      if ($status === 'ready') {
+        echo '<span class="ready">Ready</span>';
+      } elseif ($status === 'not_ready') {
+        echo '<span class="not-ready">Not Ready</span>';
+      } else {
+        echo 'Unknown';
+      }
+    ?>
+    </div>
+</body>
+
+</html>

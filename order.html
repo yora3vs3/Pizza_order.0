@@ -34,9 +34,15 @@
             border-radius: 4px;
         }
 
-        .meal-picture {
+        .meal-thumbnail {
             display: inline-block;
             margin-right: 10px;
+        }
+
+        .meal-thumbnail img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -44,17 +50,25 @@
 <body>
     <div class="container">
         <h1>Order Page</h1>
-        <div class="meal-picture">
-            <img src="meal1.jpg" alt="Meal 1" width="200" height="150">
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=ready">
+                <img src="meal1.jpg" alt="Meal 1">
+            </a>
         </div>
-        <div class="meal-picture">
-            <img src="meal2.jpg" alt="Meal 2" width="200" height="150">
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=not_ready">
+                <img src="meal2.jpg" alt="Meal 2">
+            </a>
         </div>
-        <div class="meal-picture">
-            <img src="meal3.jpg" alt="Meal 3" width="200" height="150">
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=ready">
+                <img src="meal3.jpg" alt="Meal 3">
+            </a>
         </div>
-        <div class="meal-picture">
-            <img src="meal4.jpg" alt="Meal 4" width="200" height="150">
+        <div class="meal-thumbnail">
+            <a href="submit_order.html?status=not_ready">
+                <img src="meal4.jpg" alt="Meal 4">
+            </a>
         </div>
         <p>
             <a class="button" href="order_details.html">Order Details</a>
